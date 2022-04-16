@@ -1,0 +1,14 @@
+syntax = "proto3";
+package me.chacham.dongbaek;
+
+import "google/protobuf/timestamp.proto";
+
+enum RepeatType {
+  NONE = 0;
+  REPEAT_BY_DAYS = 1;
+}
+
+message RepeatInfoData {
+  int32 period_days = 1;
+
+}
