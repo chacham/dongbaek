@@ -17,9 +17,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
 
   String _title = "";
 
-  // Type _repeatInfoType = Once;
   RepeatInfo _repeatInfo = Once(DateTimeUtils.truncateToDay(DateTime.now()));
-  DateTime _startDate = DateTimeUtils.truncateToDay(DateTime.now());
 
   static RepeatInfo _getDefaultRepeatInfo(Type type) {
     switch (type) {
@@ -67,9 +65,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
             ElevatedButton(
               onPressed: () {
                 _addScheduleFormKey.currentState!.save();
-                // context.read<ScheduleBloc>().add(AddSchedule(_title, _startDate, _repeatInfo));
-                context.read<SnapshotBloc>().add(AddSchedule(_title, _startDate, _repeatInfo));
-                // context.read<SnapshotBloc>().add(const SnapshotDataUpdated());
+                context.read<SnapshotBloc>().add(AddSchedule(_title, _repeatInfo.startDate, _repeatInfo));
                 Navigator.pop(context);
               },
               child: const Text("Create"),
